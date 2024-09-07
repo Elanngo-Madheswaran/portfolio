@@ -15,7 +15,7 @@
  
 /* Handle */
 ::-webkit-scrollbar-thumb {
-    background: #00ff00;
+    background: #1d941d;
     border-radius: 5px;
 }
  
@@ -24,33 +24,66 @@
     background: #00ff00;
 }
 
-@layer base {
-    :root {
-      --color-text-base: 255, 255, 255;
-      --color-text-muted: 199, 210, 254;
-      --color-text-inverted: 79, 70, 229;
-      --color-fill: 67, 56, 202;
-      --color-button-accent: 255, 255, 255;
-      --color-button-accent-hover: 238, 242, 255;
-      --color-button-muted: 99, 102, 241;
-    }
-    .theme-swiss {
-      --color-text-base: 255, 255, 255;
-      --color-text-muted: 254, 202, 202;
-      --color-text-inverted: 220, 38, 38;
-      --color-fill: 185, 28, 28;
-      --color-button-accent: 255, 255, 255;
-      --color-button-accent-hover: 254, 242, 242;
-      --color-button-muted: 239, 68, 68;
-    }
-    .theme-neon {
-      --color-text-base: 17, 24, 2;
-      --color-text-muted: 47, 67, 6;
-      --color-text-inverted: 235, 250, 204;
-      --color-fill: 179, 255, 23;
-      --color-button-accent: 36, 52, 3;
-      --color-button-accent-hover: 55, 79, 5;
-      --color-button-muted: 212, 255, 122;
-    }
+  
+
+  .lato-thin {
+    font-family: "Lato", sans-serif;
+    font-weight: 100;
+    font-style: normal;
+  }
+  
+  .lato-light {
+    font-family: "Lato", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+  }
+  
+  .lato-regular {
+    font-family: "Lato", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+  .lato-bold {
+    font-family: "Lato", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+  }
+  
+  .lato-black {
+    font-family: "Lato", sans-serif;
+    font-weight: 900;
+    font-style: normal;
+  }
+  
+  .lato-thin-italic {
+    font-family: "Lato", sans-serif;
+    font-weight: 100;
+    font-style: italic;
+  }
+  
+  .lato-light-italic {
+    font-family: "Lato", sans-serif;
+    font-weight: 300;
+    font-style: italic;
+  }
+  
+  .lato-regular-italic {
+    font-family: "Lato", sans-serif;
+    font-weight: 400;
+    font-style: italic;
+  }
+  
+  .lato-bold-italic {
+    font-family: "Lato", sans-serif;
+    font-weight: 700;
+    font-style: italic;
+    width: 48px;
+  }
+  
+  .lato-black-italic {
+    font-family: "Lato", sans-serif;
+    font-weight: 900;
+    font-style: italic;
   }
   
