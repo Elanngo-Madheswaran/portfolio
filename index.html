@@ -37,7 +37,7 @@
             <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
                 <div class="flex">
                     <a href="#" class="flex items-center space-x-3 rtl:space-x-reverse">
-                        <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Elanngo Madheswaran</span>
+                        <span class="self-center sm:text-2xl text-lg font-semibold whitespace-nowrap dark:text-white">Elanngo Madheswaran</span>
                     </a>
                     <div class="flex dark:bg-gray-800 ms-5">
                         <button onclick="(() => document.documentElement.classList.toggle('dark'))()"
@@ -65,10 +65,13 @@
                     <a href="#" class="block py-2 px-3 text-white bg-green-700 rounded md:bg-transparent md:text-green-700  md:p-0 dark:text-white md:dark:text-[#00ff00]" aria-current="page">About</a>
                 </li>
                 <li>
-                    <a href="#" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-green-700 md:p-0 dark:text-white md:dark:hover:text-[#00ff00] dark:hover:bg-[#00ff00] dark:hover:text-white md:dark:hover:bg-transparent">Projects</a>
+                    <a href="#skills" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-green-700 md:p-0 dark:text-white md:dark:hover:text-[#00ff00] dark:hover:bg-[#00ff00] dark:hover:text-white md:dark:hover:bg-transparent">Skills</a>
                 </li>
                 <li>
-                    <a href="#" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-green-700 md:p-0 dark:text-white md:dark:hover:text-[#00ff00] dark:hover:bg-green-700 dark:hover:text-white md:dark:hover:bg-transparent">Contact</a>
+                    <a href="#projects" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-green-700 md:p-0 dark:text-white md:dark:hover:text-[#00ff00] dark:hover:bg-green-700 dark:hover:text-white md:dark:hover:bg-transparent">Projects</a>
+                </li>
+                <li>
+                    <a href="#contact" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-green-700 md:p-0 dark:text-white md:dark:hover:text-[#00ff00] dark:hover:bg-green-700 dark:hover:text-white md:dark:hover:bg-transparent">Contact</a>
                 </li>
                 </ul>
             </div>
@@ -76,19 +79,154 @@
         </nav>
         
     </header>
+
+    <!-- Main text -->
     <div class="h-20"></div>
-    <main class="m-5 p-5 md:ms-[5rem] text-black dark:text-white flex md:flex-row items-center flex-col 2xl:w-4/5">
-        <div class="flex flex-col">
+    <main class="sm:m-5 sm:p-5 md:ms-[5rem] text-black dark:text-white flex lg:flex-row items-center flex-col 2xl:w-4/5">
+        <div class="m-5 p-5 flex flex-col">
             <p class="text-2xl sm:text-4xl font-bold">Hi <span class="dark:text-green-700 text-green-900">I'm</span></p>
             <p class="font-bold sm:text-6xl text-4xl my-5 jello-horizontal">Elan<span class="bounce-in-bck inline-block">n</span>go <span class="dark:text-green-700 text-green-900">Madheswaran</span></p>
             <p class="sm:text-xl text-md">A passionate <span class="dark:text-green-700 text-green-900">web developer</span> from India</p>
+            <button class="my-5 w-48 p-2 dark:bg-green-700 bg-green-900 text-white hover:bg-green-600 rounded-xl text-xl" onclick="opentab('https://drive.google.com/file/d/1OsCSO67coJpGc17kS-ZDRDUdGkUxGiS5/view?usp=drive_link')">My Resume</button>
         </div>
-        <div class="self-end ml-auto">
-            <img src="https://github.com/elanngo-madheswaran.png" alt="Elanngo Madheswaran" class="m-5 w-80 rounded-full">
+        <div class="lg:self-end self-center lg:ml-auto">
+            <img src="https://github.com/elanngo-madheswaran.png" alt="Elanngo Madheswaran photograph" style="min-width: 300px;" class="m-5 w-80 rounded-full">
         </div>
     </main>
     
+    <!-- skills section -->
+     <div id="skills">
+        <h3 class="dark:text-white text-green-900 font-bold text-3xl m-5">Skills</h3>
+        <div class="flex flex-wrap justify-start ">
+            <div>
+                <h4 class="dark:text-white text-green-900 font-bold text-xl m-5">Front End</h4>
+                <hr class="m-5 h-1 border-0 dark:bg-green-900 bg-black">
+                <div class="flex flex-wrap mx-2">
+                    <img src="https://profilinator.rishav.dev/skills-assets/angularjs-original.svg" alt="Angular" class="w-24 h-24 m-2">
+                    <img src="https://profilinator.rishav.dev/skills-assets/react-original-wordmark.svg" alt="React" class="w-24 h-24 m-2">
+                    <img src="https://profilinator.rishav.dev/skills-assets/bootstrap-plain.svg" alt="Bootstrap" class="w-24 h-24 m-2">
+                    <img src="https://profilinator.rishav.dev/skills-assets/nodejs-original-wordmark.svg" alt="Node.js" class="w-24 h-24 m-2">
+                    <img src="https://profilinator.rishav.dev/skills-assets/typescript-original.svg" alt="TypeScript" class="w-24 h-24 m-2">
+                    <img src="https://profilinator.rishav.dev/skills-assets/tailwindcss.svg" alt="Tailwind CSS" class="w-24 h-24 m-2">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/1/1b/Svelte_Logo.svg" alt="Svelte" class="w-24 h-24 m-2">
+                </div>
+            </div>
+            <div>
+                <h4 class="dark:text-white text-green-900 font-bold text-xl m-5">Programming</h4>
+                <hr class="m-5 h-1 border-0 dark:bg-green-900 bg-black">
+                <div class="flex flex-wrap mx-2">
+                    <img class="w-24 h-24 m-2" src="https://profilinator.rishav.dev/skills-assets/python-original.svg" alt="Python" />
+                    <img class="w-24 h-24 m-2" src="https://profilinator.rishav.dev/skills-assets/java-original-wordmark.svg" alt="Java" />
+                    <img class="w-24 h-24 m-2" src="https://profilinator.rishav.dev/skills-assets/c-original.svg" alt="C" />
+                    <img class="w-24 h-24 m-2" src="https://profilinator.rishav.dev/skills-assets/cplusplus-original.svg" alt="C++" />
+                </div>
+            </div>
+            <div>
+                <h4 class="dark:text-white text-green-900 font-bold text-xl m-5">Others</h4>
+                <hr class="m-5 h-1 border-0 dark:bg-green-900 bg-black">
+                <div class="flex flex-wrap mx-5 w-60 justify-between ">
+                    <img src="https://profilinator.rishav.dev/skills-assets/blender_community_badge_white.svg" alt="Blender" class="w-24 h-24 m-2">
+                    <img src="https://profilinator.rishav.dev/skills-assets/git-scm-icon.svg" alt="Git" class="w-24 h-24 m-2">
+                </div>
+            </div>
+        </div>
+     </div>  
+     
+
+    <!-- projects section -->
+    <div id="projects">
+        <h3 class="dark:text-white text-green-900 font-bold text-3xl m-5">Projects</h3>
+        <div class="flex flex-wrap">
+            <div class="max-w-sm p-6 rounded-lg shadow bg-green-700 dark:bg-green-900 m-5">
+                <a href="#">
+                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-white dark:text-white">Tic Tac Toe game</h5>
+                </a>
+                <p class="mb-3 font-normal text-slate-100 dark:text-slate-200">A basic tic tac toe game with game modes, sounds & user score boards made using react</p>
+                <a href="https://tic-elanngo.vercel.app/" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                    Live version
+                    <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+                    </svg>
+                </a>
+            </div>
+            <div class="max-w-sm p-6 rounded-lg shadow bg-green-700 dark:bg-green-900 m-5">
+                <a href="#">
+                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-white dark:text-white">CGPA calculator</h5>
+                </a>
+                <p class="mb-3 font-normal text-slate-100 dark:text-slate-200">CGPa calculator made using angular js , with separate sgpa for each sem and cgpa as group with bulk upload feature</p>
+                <a href="https://cgpa-elanngo.vercel.app/" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                    Live version
+                    <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+                    </svg>
+                </a>
+            </div>
+            <div class="max-w-sm p-6 rounded-lg shadow bg-green-700 dark:bg-green-900 m-5">
+                <a href="#">
+                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-white dark:text-white">Invoice Generator</h5>
+                </a>
+                <p class="mb-3 font-normal text-slate-100 dark:text-slate-200">Simple Invoice Generator with tax calculation and pdf output made using react</p>
+                <a href="https://invoice-elanngo.vercel.app/" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                    Live version
+                    <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+                    </svg>
+                </a>
+            </div>
+            <div class="max-w-sm p-6 rounded-lg shadow bg-green-700 dark:bg-green-900 m-5">
+                <a href="#">
+                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-white dark:text-white">Morse code to English Convertor</h5>
+                </a>
+                <p class="mb-3 font-normal text-slate-100 dark:text-slate-200">Morse code to english convertor made using react with copy to clipboard feature and easy toggle</p>
+                <a href="https://mte-elanngo.vercel.app/" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                    Live version
+                    <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+                    </svg>
+                </a>
+            </div>
+            <div class="max-w-sm p-6 rounded-lg shadow bg-green-700 dark:bg-green-900 m-5">
+                <a href="#">
+                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-white dark:text-white">Chess Timer</h5>
+                </a>
+                <p class="mb-3 font-normal text-slate-100 dark:text-slate-200">Chess timer with timing presets made using svelte</p>
+                <a href="https://timer-elanngo.vercel.app/" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                    Live version
+                    <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+                    </svg>
+                </a>
+            </div>
+            <div class="max-w-sm p-6 rounded-lg shadow bg-green-700 dark:bg-green-900 m-5">
+                <a href="#">
+                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-white dark:text-white">RGB game</h5>
+                </a>
+                <p class="mb-3 font-normal text-slate-100 dark:text-slate-200">RGB color code guessing game made using react</p>
+                <a href="https://rgb-elanngo.vercel.app/" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                    Live version
+                    <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- contact section -->
+    <div class="m-5" id="contact">
+        <h2 class="dark:text-white text-3xl font-bold ">Contact me</h2>
+        <div class="flex justify-center"> 
+            <button class="bg-slate-800 p-2 px-5 text-white text-2xl hover:bg-slate-500 rounded-sm m-5" onclick="opentab('https://github.com/Elanngo-Madheswaran')">Github</button>
+            <button class="bg-blue-800 p-2 px-5 text-white text-2xl hover:bg-blue-500 rounded-sm m-5" onclick="opentab('https://www.linkedin.com/in/elanngomadheswaran/')">Linked In</button>
+        </div>
+    </div>
     
+
+    <script>
+        function opentab(url){
+            window.open(url, '_blank');
+        }
+    </script>
     
 
     <script src="./tailwind.config.js"></script>
