@@ -59,7 +59,7 @@
                         link: "https://timer-elanngo.vercel.app/"
                     },
                     {
-                        name: "RGB game",
+                        name: "RGB gae",
                         description: "RGB color code guessing game made using react",
                         link: "https://rgb-elanngo.vercel.app/"
                     }
