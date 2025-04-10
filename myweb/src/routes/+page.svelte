@@ -1,4 +1,5 @@
 <script>
+    import "../app.css";
     let isDark = $state(true); 
     let skills = [
         {
