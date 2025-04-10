@@ -1,17 +1,18 @@
 <script>
     import "../app.css";
+    import { SkillBoard } from "$components";
     let isDark = $state(true); 
     let skills = [
         {
             category: "Front End",
             items: [
-                { name: "Angular", icon: "https://profilinator.rishav.dev/skills-assets/angularjs-original.svg" },
+                { name: "Svelte", icon: "https://upload.wikimedia.org/wikipedia/commons/1/1b/Svelte_Logo.svg" },
                 { name: "React", icon: "https://profilinator.rishav.dev/skills-assets/react-original-wordmark.svg" },
+                { name: "Angular", icon: "https://profilinator.rishav.dev/skills-assets/angularjs-original.svg" },
                 { name: "Bootstrap", icon: "https://profilinator.rishav.dev/skills-assets/bootstrap-plain.svg" },
                 { name: "Node.js", icon: "https://profilinator.rishav.dev/skills-assets/nodejs-original-wordmark.svg" },
                 { name: "TypeScript", icon: "https://profilinator.rishav.dev/skills-assets/typescript-original.svg" },
                 { name: "Tailwind CSS", icon: "https://profilinator.rishav.dev/skills-assets/tailwindcss.svg" },
-                { name: "Svelte", icon: "https://upload.wikimedia.org/wikipedia/commons/1/1b/Svelte_Logo.svg" },
                 { name: "Next.js", icon: "https://profilinator.rishav.dev/skills-assets/nextjs.png" }
             ]
         },
@@ -59,7 +60,7 @@
                         link: "https://timer-elanngo.vercel.app/"
                     },
                     {
-                        name: "RGB gae",
+                        name: "RGB game",
                         description: "RGB color code guessing game made using react",
                         link: "https://rgb-elanngo.vercel.app/"
                     }
@@ -147,17 +148,9 @@
          <div id="skills" class="flex flex-col">
             <div class="text-black dark:text-white flex items-center flex-col xl:w-3/4 self-center mb-5 pb-5">
                 <h3 class="dark:text-white text-green-900 font-bold text-3xl mx-5 px-5 self-start">Skills</h3>
-                <div class="flex flex-wrap sm:mx-5 sm:px-5">
+                <div class="flex flex-wrap sm:mx-5 sm:px-5 justify-center items-center">
                     {#each skills as skillCategory}
-                        <div>
-                            <h4 class="dark:text-white text-green-900 font-bold text-xl m-5">{skillCategory.category}</h4>
-                            <hr class="m-5 h-1 border-0 dark:bg-green-900 bg-black">
-                            <div class="flex flex-wrap mx-2">
-                                {#each skillCategory.items as skill}
-                                    <img src={skill.icon} alt={skill.name} class="w-16 h-16 m-1">
-                                {/each}
-                            </div>
-                        </div>
+                        <SkillBoard {skillCategory} />
                     {/each}
                 </div>
             </div>
