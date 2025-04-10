@@ -2,6 +2,8 @@
     import "../app.css";
     import { SkillBoard , Navbar } from "$components";
 
+
+
     function opentab(url) {
         window.open(url, '_blank');
     }
@@ -77,7 +79,7 @@
     }
 </script>
 
-<div class="bg-white dark:bg-black selection:bg-green-700 selection:text-white {isDark ? 'dark' : ''} transition duration-700 ease-in-out">
+<div class="bg-white dark:bg-black selection:bg-green-700 selection:text-white {isDark ? 'dark' : ''} transition duration-700 ease-in-out h-full">
         <header class="fixed w-full z-20 top-0 start-0">
             <!-- top nav bar -->
             <Navbar bind:isDark={isDark} />
@@ -148,6 +150,4 @@
                 </div>
             </div>
         </div>
-        
-    
 </div>
