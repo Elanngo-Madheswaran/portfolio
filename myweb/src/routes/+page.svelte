@@ -91,9 +91,9 @@
         <div class="flex flex-col">
             <div class="text-dark dark:text-white flex m-5 p-5 xl:w-3/4 self-center md:flex-row flex-col">
                 <div class="sm:m-5 sm:p-5 flex flex-col">
-                    <p class="text-2xl lg:text-4xl font-bold">Hi <span class="dark:text-green-700 text-green-900">I'm</span></p>
-                    <p class="font-bold lg:text-6xl text-4xl my-5 jello-horizontal">Elan<span class="bounce-in-bck inline-block">n</span>go <span class="dark:text-green-700 text-green-900">Madheswaran</span></p>
-                    <p class="sm:text-xl text-md">A passionate <span class="dark:text-green-700 text-green-900">web developer</span> from India</p>
+                    <p class="text-2xl lg:text-4xl font-bold">Hi <span class="dark:text-green-400 text-green-900">I'm</span></p>
+                    <p class="font-bold lg:text-6xl text-4xl my-5 jello-horizontal">Elan<span class="bounce-in-bck inline-block">n</span>go <span class="dark:text-green-500 text-green-900">Madheswaran</span></p>
+                    <p class="sm:text-xl text-md">A passionate <span class="dark:text-green-400 text-green-900">web developer</span> from India</p>
                     <button class="my-5 w-48 p-2 dark:bg-green-700 bg-green-900 text-white hover:bg-green-600 dark:hover:bg-green-900 transition hover:-translate-y-1.5 hover:scale-110 rounded-xl text-xl cursor-pointer" onclick={() =>opentab('https://drive.google.com/file/d/1V6OOXFqKCnpJhqI1R36YOPshP1gVBi-Q/view?usp=sharing')}>My Resume</button>
                 </div>
                 <div class="lg:self-end self-center lg:ml-auto">
