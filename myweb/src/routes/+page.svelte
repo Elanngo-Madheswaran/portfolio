@@ -97,7 +97,7 @@
                     <button class="my-5 w-48 p-2 dark:bg-green-700 bg-green-900 text-white hover:bg-green-600 dark:hover:bg-green-900 transition hover:-translate-y-1.5 hover:scale-110 rounded-xl text-xl cursor-pointer" onclick={() =>opentab('https://drive.google.com/file/d/1V6OOXFqKCnpJhqI1R36YOPshP1gVBi-Q/view?usp=sharing')}>My Resume</button>
                 </div>
                 <div class="lg:self-end self-center lg:ml-auto">
-                    <img src="https://github.com/elanngo-madheswaran.png" alt="Elanngo Madheswaran photograph" style="min-width: 200px;" class="sm:m-5 md:w-80 w-60 rounded-full">
+                    <img src="/logos/elanngo.jpg" alt="Elanngo Madheswaran photograph" style="min-width: 200px;" class="sm:m-5 md:w-80 w-60 rounded-full">
                 </div>
             </div>
         </div>
