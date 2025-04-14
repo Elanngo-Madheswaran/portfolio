@@ -1,6 +1,6 @@
 <script>
     import "../app.css";
-    import { SkillBoard , Navbar } from "$components";
+    import { SkillBoard , Navbar , Socials } from "$components";
     import { onMount } from "svelte";
 
     function opentab(url) {
@@ -72,6 +72,12 @@
                     }
                 ];
 
+    let socialLinks = [
+        { href: "mailto:elanngo@disroot.org", ariaLabel: "Email", icon: "/logos/gmail.png" , tooltip :"Mail"},
+        { href: "https://www.linkedin.com/in/elanngo-madheswaran/", ariaLabel: "LinkedIn", icon: "/logos/linkedin.png" , tooltip:"LinkedIn" },
+        { href: "https://github.com/elanngo-madheswaran", ariaLabel: "GitHub", icon: "/logos/github.png", tooltip:"Github" }
+    ];
+
     function toggleDarkMode() {
         isDark = !isDark;
     }
@@ -105,7 +111,7 @@ let { form , data } = $props();
         </div>
         
         <!-- skills section -->
-         <div id="skills" class="flex flex-col">
+         <section id="skills" class="flex flex-col">
             <div class="text-black dark:text-white flex items-center flex-col xl:w-3/4 self-center mb-5 pb-5">
                 <h3 class="dark:text-white text-green-900 font-bold text-3xl mx-5 px-5 self-start">Skills</h3>
                 <div class="flex flex-wrap sm:mx-5 sm:px-5 justify-center items-center">
@@ -114,11 +120,11 @@ let { form , data } = $props();
                     {/each}
                 </div>
             </div>
-        </div>
+        </section>
          
     
         <!-- projects section -->
-        <div id="projects" class="flex flex-col">
+        <section id="projects" class="flex flex-col">
             <div class="xl:w-3/4 self-center w-full sm:m-5 sm:p-5 flex flex-col">
                 <h3 class="dark:text-white text-green-900 font-bold text-3xl m-5">Projects</h3>
                 <div class="self-center lg:w-full sm:w-3/4">
@@ -140,16 +146,12 @@ let { form , data } = $props();
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
     
         <!-- contact section -->
-        <script>
-            
-            </script>
-            
-            <div id="contact" class="flex flex-col">
-                <div class="md:w-3/4 self-center w-full sm:p-5 flex flex-col m-5">
-                    <h3 class="dark:text-white text-green-900 font-bold text-3xl m-5">Contact</h3>
+        <section id="contact" class="flex flex-col">
+            <div class="xl:w-3/4 self-center w-full sm:m-5 sm:p-5 flex flex-col">
+                    <h3 class="dark:text-white text-green-900 font-bold text-3xl m-5">Contact Me</h3>
                     <form method="POST" class="flex flex-col bg-green-700 dark:bg-green-950 p-6 rounded-lg shadow text-white md:w-3/4 w-full self-center">
                         {#if form?.error}
                         <p class="text-red-400 mb-3">I am expirencing few issues, Please try again later or email directly through <a href="mailto:elanngo@disroot.org" class="text-blue-400">elanngo@disroot.org</a></p>
@@ -172,7 +174,11 @@ let { form , data } = $props();
                         {/if}
                     </form>
                 </div>
-            </div>
+            </section>
 
-            
+            <!-- Social links -->
+    <section id="social-links" class="flex flex-col">
+        <Socials {socialLinks} />
+    </section>
+
 </div>
