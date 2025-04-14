@@ -74,7 +74,7 @@
 
     let socialLinks = [
         { href: "mailto:elanngo@disroot.org", ariaLabel: "Email", icon: "/logos/gmail.png" , tooltip :"Mail"},
-        { href: "https://www.linkedin.com/in/elanngo-madheswaran/", ariaLabel: "LinkedIn", icon: "/logos/linkedin.png" , tooltip:"LinkedIn" },
+        { href: "https://www.linkedin.com/in/elanngomadheswaran/", ariaLabel: "LinkedIn", icon: "/logos/linkedin.png" , tooltip:"LinkedIn" },
         { href: "https://github.com/elanngo-madheswaran", ariaLabel: "GitHub", icon: "/logos/github.png", tooltip:"Github" }
     ];
 
