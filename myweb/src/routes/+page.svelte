@@ -148,27 +148,26 @@ let { form , data } = $props();
             </script>
             
             <div id="contact" class="flex flex-col">
-                <div class="md:w-3/4 self-center w-full sm:m-5 sm:p-5 flex flex-col">
+                <div class="md:w-3/4 self-center w-full sm:p-5 flex flex-col m-5">
                     <h3 class="dark:text-white text-green-900 font-bold text-3xl m-5">Contact</h3>
-                    <form method="POST" class="flex flex-col bg-green-700 dark:bg-green-950 p-6 rounded-lg shadow text-white">
+                    <form method="POST" class="flex flex-col bg-green-700 dark:bg-green-950 p-6 rounded-lg shadow text-white md:w-3/4 w-full self-center">
                         {#if form?.error}
                         <p class="text-red-400 mb-3">I am expirencing few issues, Please try again later or email directly through <a href="mailto:elanngo@disroot.org" class="text-blue-400">elanngo@disroot.org</a></p>
                         {/if}
                         {#if form?.success == true}
                             <p class="text-green-300 mb-3">Mail Sent Successfully , I will contact you within 48 hours.</p>
                         {:else}
-                            <label for="name" class="mb-2 font-medium">Name</label>
-                            <input id="name" type="text" name="name" required class="mb-4 p-2 rounded-lg text-black dark:text-black bg-gray-300" />
+                            <label for="name" class="mb-2 font-bold text-xl">Name</label>
+                            <input id="name" type="text" name="name" required class="mb-4 p-2 rounded-lg text-black dark:text-black dark:bg-gray-300 bg-white" />
                             
-                            <label for="email" class="mb-2 font-medium">Email</label>
-                            <input id="email" type="email" name="email" required class="mb-4 p-2 rounded-lg text-black dark:text-black bg-gray-300" />
+                            <label for="email" class="mb-2 font-bold text-xl">Email</label>
+                            <input id="email" type="email" name="email" required class="mb-4 p-2 rounded-lg text-black dark:text-black dark:bg-gray-300 bg-white" />
                             
-                            <label for="company" class="mb-2 font-medium">Company</label>
-                            <input id="company" type="text" name="company" class="mb-4 p-2 rounded-lg text-black dark:text-black bg-gray-300" />
+                            <label for="company" class="mb-2 font-bold text-xl">Company</label>
+                            <input id="company" type="text" name="company" class="mb-4 p-2 rounded-lg text-black dark:text-black dark:bg-gray-300 bg-white" />
                             
-                            <label for="message" class="mb-2 font-medium">Message</label>
-                            <textarea id="message" name="message" required rows="3" class="mb-4 p-2 rounded-lg text-black dark:text-black bg-gray-300"></textarea>
-                            
+                            <label for="message" class="mb-2 font-bold text-xl">Message</label>
+                            <textarea id="message" name="message" required rows="3" class="mb-4 p-2 rounded-lg text-black dark:text-black dark:bg-gray-300 bg-white"></textarea>
                             <input type="submit" value="Send" class="w-48 p-2 bg-blue-700 text-white hover:bg-blue-800 transition hover:-translate-y-1.5 hover:scale-110 rounded-xl text-xl cursor-pointer" />
                         {/if}
                     </form>
