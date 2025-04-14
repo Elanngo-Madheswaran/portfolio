@@ -6,10 +6,10 @@
     <h3 class="dark:text-white text-green-900 font-bold text-3xl m-5">Socials</h3>
     <ul class="flex flex-wrap justify-center align-middle wrapper">
         {#each socialLinks as link}
-            <a href="{link.href}" target="_blank" rel="noopener noreferrer">
+            <a href="{link.href}" target="_blank" rel="noopener noreferrer" class="group">
                 <li class="icon m-5 md:w-25 md:h-25 w-15 h-15 rounded-full bg-green-900">
                     <span class="tooltip text-black bg-white">{link.tooltip}</span>
-                    <img src={link.icon} alt={link.tooltip} class="md:w-15 md:h-15 w-10 h-10"  />
+                    <img src={link.icon} alt={link.tooltip} class="md:w-15 md:h-15 w-10 h-10 group-hover:animate-shake-lr"  />
                 </li>
             </a>
         {/each}
