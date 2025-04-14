@@ -1,13 +1,11 @@
 <script>
     import "../app.css";
     import { SkillBoard , Navbar } from "$components";
-
-
+    import { onMount } from "svelte";
 
     function opentab(url) {
         window.open(url, '_blank');
     }
-
 
     let isDark = $state(true); 
     let skills = [
@@ -77,6 +75,10 @@
     function toggleDarkMode() {
         isDark = !isDark;
     }
+    
+let status = $state("");
+let { form , data } = $props();
+            
 </script>
 
 <div class="bg-white dark:bg-black selection:bg-green-700 selection:text-white {isDark ? 'dark' : ''} transition duration-700 ease-in-out h-full">
@@ -123,7 +125,7 @@
                     <div class="flex flex-wrap justify-center">
                         {#each projects as project}
                             <div class="max-w-sm p-6 rounded-lg shadow bg-green-700 dark:bg-green-900 m-5">
-                                <a href="#">
+                                <a href="/">
                                     <h4 class="mb-2 text-2xl font-bold tracking-tight text-white dark:text-white">{project.name}</h4>
                                 </a>
                                 <p class="mb-3 font-normal text-slate-100 dark:text-slate-200">{project.description}</p>
@@ -141,13 +143,37 @@
         </div>
     
         <!-- contact section -->
-        <div class="m-5 flex flex-col" id="contact">
-            <div class="xl:w-3/4 self-center w-full sm:m-5 sm:p-5">
-                <h2 class="dark:text-white text-3xl font-bold  text-green-900">Contact me</h2>
-                <div class="flex justify-center"> 
-                    <button class="bg-slate-800 p-2 px-5 text-white text-2xl hover:bg-slate-500 rounded-sm m-5" onclick={ () =>opentab('https://github.com/Elanngo-Madheswaran')}>Github</button>
-                    <button class="bg-blue-800 p-2 px-5 text-white text-2xl hover:bg-blue-500 rounded-sm m-5" onclick={ () => opentab('https://www.linkedin.com/in/elanngomadheswaran/')}>Linked In</button>
+        <script>
+            
+            </script>
+            
+            <div id="contact" class="flex flex-col">
+                <div class="md:w-3/4 self-center w-full sm:m-5 sm:p-5 flex flex-col">
+                    <h3 class="dark:text-white text-green-900 font-bold text-3xl m-5">Contact</h3>
+                    <form method="POST" class="flex flex-col bg-green-700 dark:bg-green-950 p-6 rounded-lg shadow text-white">
+                        {#if form?.error}
+                        <p class="text-red-400 mb-3">I am expirencing few issues, Please try again later or email directly through <a href="mailto:elanngo@disroot.org" class="text-blue-400">elanngo@disroot.org</a></p>
+                        {/if}
+                        {#if form?.success == true}
+                            <p class="text-green-300 mb-3">Mail Sent Successfully , I will contact you within 48 hours.</p>
+                        {:else}
+                            <label for="name" class="mb-2 font-medium">Name</label>
+                            <input id="name" type="text" name="name" required class="mb-4 p-2 rounded-lg text-black dark:text-black bg-gray-300" />
+                            
+                            <label for="email" class="mb-2 font-medium">Email</label>
+                            <input id="email" type="email" name="email" required class="mb-4 p-2 rounded-lg text-black dark:text-black bg-gray-300" />
+                            
+                            <label for="company" class="mb-2 font-medium">Company</label>
+                            <input id="company" type="text" name="company" class="mb-4 p-2 rounded-lg text-black dark:text-black bg-gray-300" />
+                            
+                            <label for="message" class="mb-2 font-medium">Message</label>
+                            <textarea id="message" name="message" required rows="3" class="mb-4 p-2 rounded-lg text-black dark:text-black bg-gray-300"></textarea>
+                            
+                            <input type="submit" value="Send" class="w-48 p-2 bg-blue-700 text-white hover:bg-blue-800 transition hover:-translate-y-1.5 hover:scale-110 rounded-xl text-xl cursor-pointer" />
+                        {/if}
+                    </form>
                 </div>
             </div>
-        </div>
+
+            
 </div>
