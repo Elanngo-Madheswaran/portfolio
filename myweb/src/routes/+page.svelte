@@ -41,6 +41,12 @@
     ];
     let projects = [
                     {
+                        name: "Minesweeper game",
+                        description: "Minesweeper game made using svelte leveraging its reactive states and components",
+                        link: "https://mines-elanngo.vercel.app/"
+
+                    },
+                    {
                         name: "Tic Tac Toe game",
                         description: "A basic tic tac toe game with game modes, sounds & user score boards made using react",
                         link: "https://tic-elanngo.vercel.app/"
@@ -131,9 +137,7 @@ let { form , data } = $props();
                     <div class="flex flex-wrap justify-center">
                         {#each projects as project}
                             <div class="max-w-sm p-6 rounded-lg shadow bg-green-700 dark:bg-green-900 m-5">
-                                <a href="/">
-                                    <h4 class="mb-2 text-2xl font-bold tracking-tight text-white dark:text-white">{project.name}</h4>
-                                </a>
+                                <h4 class="mb-2 text-2xl font-bold tracking-tight text-white dark:text-white">{project.name}</h4>
                                 <p class="mb-3 font-normal text-slate-100 dark:text-slate-200">{project.description}</p>
                                 <a href={project.link} class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                                     Live version
