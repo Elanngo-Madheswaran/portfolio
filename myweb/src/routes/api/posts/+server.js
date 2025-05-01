@@ -6,8 +6,8 @@ export async function GET() {
     const postImports = import.meta.glob('/static/content/blogs/*.{md,mdx}', { eager: true, as: 'raw' });
     
     const posts = Object.entries(postImports).map(([path, content]) => {
-      // Extract slug from path
-      const slug = path.split('/').pop().replace(/\.(md|mdx)$/, '');
+      // Extract filename from path (which now contains date)
+      const filename = path.split('/').pop().replace(/\.(md|mdx)$/, '');
       
       // Extract frontmatter with a simple regex approach
       const frontmatterMatch = content.match(/---\r?\n([\s\S]*?)\r?\n---/);
@@ -22,11 +22,20 @@ export async function GET() {
           metadata[key.trim()] = value;
         }
       });
+
+      // Use the article number as the slug if available
+      const articleNo = metadata['ArticleNo'] || metadata['articleNo'] || metadata['article_no'];
+      const slug = articleNo || filename;
+      
+      // Use Last-edited as the date field if available
+      const date = metadata['Last-edited'] || metadata.date || filename.split('-').slice(0, 3).join('-');
       
       return {
         slug,
-        title: metadata.title || slug,
-        date: metadata.date || new Date().toISOString().split('T')[0],
+        articleNo: articleNo || null,
+        filename,
+        title: metadata.Title || metadata.title || filename,
+        date: date,
         excerpt: metadata.excerpt || '',
         ...metadata
       };
