@@ -3,113 +3,147 @@ Title: My blog Implementation
 Last-edited: 01-05-2025
 excerpt: This article discusses how I implemented my blog
 ---
----
 # How My Blog Works with SvelteKit and Markdown
 
 ## Introduction
 
 In this post, I'll explain how I built my blog system using SvelteKit, markdown files, and Obsidian as my content editor. The system is designed to be simple, yet flexible, allowing me to write content naturally while maintaining a modern web experience.
+### Idea overview:
 
-## The Architecture Overview
+I made my mind to write some blog by myself writing about the things I learn and apply for documenting the process and for future references and for the sake of creating content.
 
-My blog works through these main components:
+There are several ways to implement this blogs like using some existing cms and just posting my content there and fetching with some api. But I dont want to hazzle with their structure and styling might be a issue.
 
-1. **Content Creation** - Writing markdown files in Obsidian
-2. **Content Storage** - Storing files in the static folder
-3. **API Layer** - SvelteKit endpoints to process and serve the content
-4. **Frontend Components** - Displaying the content with features like dark mode and table of contents
+Since I already use Obsidian in my daily life for note taking and jornalling purpose I planned to integrate the blog system somehow so that I could use obsidian to edit my blogs , so for that I have to use md files to store my blogs.
 
-## Writing Content with Obsidian
+As my portfolio website is made using [Svelte](https://svelte.dev/) I posted my idea in reddit and got some suggestions where I learnt that svelte has a built in module called [mdsvex ](https://svelte.dev/docs/cli/mdsvex) it allows to get the data in md files which can be rendered as html. One half of the process got cleared.
 
-I use [Obsidian](https://obsidian.md/) as my primary content editor. It's a powerful markdown editor that lets me write and organize my thoughts effectively. The process is simple:
+Other part is storing and syncing the md file from obsidian and my project repo there came another suggestion from another reddit user with his own  [blog](https://bryanhogan.com/blog/obsidian-astro-submodule) setup done using Astro and GitHub submodules. This works similar to my implementation but slightly more complicated here we store our md files in one repo and add that repo as a submodule inside our project repo so that we can have our md files separate and can be used in multiple projects at once. Though it seems nice I don't want multiple projects to share my blogs so I just sticked with a single repo
+## Process
 
-1. Create a new markdown file in the `/static/content/blogs/` directory
-2. Add frontmatter at the top of the file:
-3. Write the content using standard markdown
-4. The file automatically becomes available on my website
+### Project setup
 
-### What makes Obsidian great for this workflow:
+1. Open your existing svelte project or create a new one and open the `/static` folder inside src.
+2. There create `content/blogs` and `content/blog-assets` folders.
+3. Then open obsidian and then open the content folder as a vault and add git from community plugins
+4. From then on you can create new blogs as a new note inside the `/blogs` folder and have you images and other assets inside `/blog-assests` folder
+5. After making all the changes you can use the git plugin button in the obsidian sidebar to commit the changes to the project.
+### Processing the blog files
 
-- **Templates** - I've set up a template in `/static/content/template/Template.md` that provides the basic frontmatter structure
-- **Preview** - I can see how my markdown will look while writing
-- **Plugins** - Additional functionality like graph view helps me organize content
+As of the previous steps the blog md files will gets saved in the `/static/content/blogs` folder so we can easily get those files and process them inside our project , I use mdsvex to render the md to html and 
 
-## Processing and Serving Content
-
-The backend of my blog system is powered by SvelteKit's file-based routing and API endpoints:
-
-### API Endpoint for Posts
-
-The `/api/posts` endpoint (implemented in `src/routes/api/posts/+server.js`) does the heavy lifting:
-
-1. Uses `import.meta.glob` to find all markdown files in the blogs directory
+1. Use `import.meta.glob` to find all markdown files in the blogs directory
 2. Parses frontmatter from each file to extract metadata
 3. Organizes posts by date, title, and other properties
 4. Returns a sorted list of posts as JSON
+5. I do all these process inside  `/routes/blog/+page.server.js`
+The code looks something like this 
 
-### Individual Post Loading
+```
+ import { error } from '@sveltejs/kit';
 
-When a user visits a specific blog post:
+  
 
-1. The `[slug]` parameter in the URL is used to find the corresponding markdown file
-2. The server component (`+page.server.js`) loads and parses the file
-3. It first tries to match by `ArticleNo`, then falls back to matching by filename
-4. Frontmatter is extracted for metadata, and the main content is separated
-5. The parsed content is passed to the page component
+export async function load() {
 
-## Frontend Display and Features
+    try {
 
-The frontend components render the blog with several key features:
+        // Update to new glob syntax
 
-### Blog List Page
+        const postFiles = import.meta.glob('/static/content/blogs/*.{md,mdx}', {
 
-The blog list (`/blogs`) page includes:
+            eager: true,
 
-- Search functionality to filter posts by title or excerpt
-- Sorting options (newest/oldest first, alphabetical)
-- Responsive cards showing post title, date, and excerpt
+            query: '?raw',
 
-### Individual Blog Post
+            import: 'default'
 
-Each blog post page (`/blogs/[slug]`) has:
+        });
 
-1. **Hierarchical Table of Contents**
-   - Automatically generated from headings in the content
-   - Collapsible sections based on heading hierarchy
-   - Active section highlighting as you scroll
+        // Process each post file
 
-2. **Responsive Design**
-   - Mobile-friendly layout that adapts to different screen sizes
-   - Sidebar that appears on larger screens
+        const posts = [];
 
-3. **Theme Support**
-   - Seamless dark/light mode that persists across pages
-   - Theme toggle in the navigation bar
+        for (const [path, content] of Object.entries(postFiles)) {
 
-## Theme Management
+            // Extract frontmatter
 
-I implemented a theme system that:
+            const frontmatterMatch = content.match(/---\r?\n([\s\S]*?)\r?\n---/);
 
-1. Stores user preference in localStorage
-2. Applies the theme consistently across all pages
-3. Provides smooth transitions between themes
-4. Uses Tailwind's dark mode classes for styling
+            const frontmatter = frontmatterMatch ? frontmatterMatch[1] : '';
 
-The theme is controlled by a central store in `src/lib/stores/themeStore.js`, which ensures consistency across the entire site.
+            // Parse frontmatter
 
-## Code Syntax Highlighting
+            const metadata = {};
 
-For code blocks in my blog posts, I use the built-in syntax highlighting from the markdown parser. This makes technical content much more readable and visually appealing.
+            frontmatter.split('\n').forEach(line => {
 
-## Accessibility and Performance
+                const [key, ...valueParts] = line.split(':');
 
-The blog system is built with accessibility in mind:
+                if (key && valueParts.length > 0) {
 
-- Proper semantic HTML structure
-- ARIA attributes where appropriate
-- Good color contrast in both light and dark modes
-- Responsive design that works on all devices
+                    const value = valueParts.join(':').trim();
 
+                    metadata[key.trim()] = value;
+
+                }
+
+            });
+
+            // Get filename from path
+
+            const filename = path.split('/').pop().replace(/\.(md|mdx)$/, '');
+
+            // Extract slug from frontmatter or filename
+
+            const articleNo = metadata['ArticleNo'] || metadata['articleNo'] || metadata['article_no'] || filename;
+
+            const date = metadata['Last-edited'] || metadata.date || new Date().toISOString();
+
+            const title = metadata.Title || metadata.title || filename;
+
+            const excerpt = metadata.excerpt || '';
+
+            // Add to posts array
+
+            posts.push({
+
+                slug: articleNo,
+
+                title: title,
+
+                date: date,
+
+                excerpt: excerpt,
+
+                path: path
+
+            });
+
+        }
+
+        // Sort posts by date (newest first)
+
+        posts.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+        return {
+
+            posts
+
+        };
+
+    } catch (e) {
+
+        console.error(e);
+
+        throw error(500, 'Could not load blog posts');
+
+    }
+
+}  
+```
+ 
+Then we show the list of all the blogs and when they click any blog they go to specific route to show the complete blog which again gets the files and processes the total file inside +page.server.js. Note that I am using these files so that all the processing happens inside server so it will fast and reliable.
 ## Conclusion
 
 This blog system provides me with a seamless writing experience while giving readers a modern, fast website experience. By using markdown files stored in the repository, I maintain full control over my content without needing a traditional CMS or database.
