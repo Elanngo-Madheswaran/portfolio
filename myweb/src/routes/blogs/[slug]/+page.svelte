@@ -107,7 +107,7 @@
     </div>
 </section>
 
-<script context="module">
+<script module>
 // Helper function to add IDs to HTML headings based on extracted headings
 export function modifyHTMLWithIDs(html, headings) {
     if (!headings || headings.length === 0) return html;
