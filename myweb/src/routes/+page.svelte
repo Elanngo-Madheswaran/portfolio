@@ -94,6 +94,10 @@ let { form , data } = $props();
             
 </script>
 
+<svelte:head>
+    <title>Elanngo Madheswaran's Portfolio | Portfolio</title>
+</svelte:head>
+
 <div class="bg-white dark:bg-black selection:bg-green-700 selection:text-white {theme == 'dark' ? 'dark' : ''} transition duration-700 ease-in-out h-full">
         <header class="fixed w-full z-20 top-0 start-0">
             <!-- top nav bar -->
