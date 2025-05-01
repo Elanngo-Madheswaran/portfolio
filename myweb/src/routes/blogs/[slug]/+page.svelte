@@ -91,7 +91,7 @@
                 <p class="text-slate-600 dark:text-slate-400 italic">{new Date(metadata.date).toLocaleDateString()}</p>
             </header>
             
-            <div bind:this={contentContainer} class="prose prose-green dark:prose-invert max-w-none dark:text-slate-200">
+            <div bind:this={contentContainer} class="prose prose-green dark:prose-invert max-w-none dark:text-slate-200 prose-sm sm:prose-base lg:prose-lg xl:prose-xl">
                 {@html modifyHTMLWithIDs(htmlContent, headings)}
             </div>
             
