@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "blogs/Hello-World-5-01-25.md",
+                "file": "blogs/First-Blog-5-01-25.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Hello-World-5-01-25"
+              "title": "First-Blog-5-01-25"
             }
           },
           {
@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "blogs/Title.md",
+                "file": "blogs/First-Blog-5-01-25.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Title"
+              "title": "First-Blog-5-01-25"
             }
           }
         ],
@@ -109,7 +109,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "blogs/Title.md",
+                "file": "blogs/First-Blog-5-01-25.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -119,7 +119,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for Title"
+              "title": "Backlinks for First-Blog-5-01-25"
             }
           },
           {
@@ -128,12 +128,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "blogs/Title.md",
+                "file": "blogs/First-Blog-5-01-25.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Outgoing links from Title"
+              "title": "Outgoing links from First-Blog-5-01-25"
             }
           },
           {
@@ -157,21 +157,31 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "blogs/Title.md",
+                "file": "blogs/First-Blog-5-01-25.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Title"
+              "title": "Outline of First-Blog-5-01-25"
+            }
+          },
+          {
+            "id": "f93ccc9640163d7d",
+            "type": "leaf",
+            "state": {
+              "type": "git-view",
+              "state": {},
+              "icon": "git-pull-request",
+              "title": "Source Control"
             }
           }
-        ]
+        ],
+        "currentTab": 4
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -180,12 +190,13 @@
       "canvas:Create new canvas": false,
       "daily-notes:Open today's daily note": false,
       "templates:Insert template": false,
-      "command-palette:Open command palette": false
+      "command-palette:Open command palette": false,
+      "obsidian-git:Open Git source control": false
     }
   },
   "active": "89a77f84c666e780",
   "lastOpenFiles": [
-    "blogs/Hello-World-5-01-25.md",
-    "blogs/Title.md"
+    "blogs/Title.md",
+    "blogs/First-Blog-5-01-25.md"
   ]
 }
