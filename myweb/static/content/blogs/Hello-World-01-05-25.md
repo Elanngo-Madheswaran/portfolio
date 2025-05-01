@@ -1,7 +1,7 @@
 ---
 Last-edited: 2025-05-01
 Title: Hello World
-excerpt: My first blog post explaining the basics of programming
+excerpt: My first blog post
 ---
 # Hello World 🌍
 
