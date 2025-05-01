@@ -124,7 +124,3 @@ Future enhancements might include:
 - Adding reading time estimates
 
 If you're interested in building something similar, feel free to reach out or check out my GitHub repository!
-
----
-
-Happy coding!

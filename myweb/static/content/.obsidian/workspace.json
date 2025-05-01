@@ -162,7 +162,7 @@
             }
           }
         ],
-        "currentTab": 4
+        "currentTab": 3
       }
     ],
     "direction": "horizontal",
@@ -179,7 +179,7 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "89a77f84c666e780",
+  "active": "a17eb7c41625e9dd",
   "lastOpenFiles": [
     "blogs/Hello-World-01-05-25.md",
     "blogs/How I implemented my blog.md",

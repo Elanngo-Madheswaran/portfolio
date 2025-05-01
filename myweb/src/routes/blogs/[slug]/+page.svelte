@@ -2,6 +2,7 @@
     import { marked } from 'marked';
     import { onMount } from 'svelte';
     import { tick } from 'svelte';
+    import { afterNavigate } from '$app/navigation';
     
     let { data } = $props();
     const { metadata, content } = data;
@@ -12,44 +13,14 @@
     // Array to store headings
     let headings = $state([]);
     let activeHeading = $state('');
-    let collapsedSections = $state({}); // Track collapsed state of sections
     
     // Reference to the content container
     let contentContainer;
     
-    // Function to toggle section collapse state
-    function toggleSection(id) {
-        collapsedSections[id] = !collapsedSections[id];
-        collapsedSections = {...collapsedSections}; // Force reactivity
-    }
-    
-    // Function to check if a section should be shown
-    function shouldShowHeading(heading, headings) {
-        // Always show top-level headings
-        if (heading.level <= 2) return true;
+    // Function to process headings
+    async function processHeadings() {
+        if (!contentContainer) return;
         
-        // Find parent heading
-        const headingIndex = headings.indexOf(heading);
-        let parentLevel = heading.level - 1;
-        
-        for (let i = headingIndex - 1; i >= 0; i--) {
-            if (headings[i].level < heading.level) {
-                // Check if parent section is collapsed
-                if (collapsedSections[headings[i].id]) {
-                    return false;
-                }
-                
-                // If found parent at the direct level above, no need to check further
-                if (headings[i].level === parentLevel) {
-                    break;
-                }
-            }
-        }
-        
-        return true;
-    }
-    
-    onMount(async () => {
         // Wait for the next DOM update to ensure content is rendered
         await tick();
         
@@ -66,23 +37,12 @@
                 heading.id = heading.textContent.toLowerCase().replace(/\s+/g, '-');
             }
             
-            // Initialize collapsed state for headings that might have children
-            collapsedSections[heading.id] = false; // Default to expanded
-            
             headings.push({
                 id: heading.id,
                 title: heading.textContent,
-                level: parseInt(heading.tagName.substring(1)),
-                hasChildren: false // Will be determined later
+                level: parseInt(heading.tagName.substring(1))
             });
         });
-        
-        // Mark headings that have children
-        for (let i = 0; i < headings.length - 1; i++) {
-            if (headings[i+1].level > headings[i].level) {
-                headings[i].hasChildren = true;
-            }
-        }
         
         console.log('Processed headings:', headings); // Debug
         
@@ -94,12 +54,21 @@
                         activeHeading = entry.target.id;
                     }
                 });
-            }, { rootMargin: '-100px 0px -80% 0px' });
+            }, { rootMargin: '-50px 0px -80% 0px' }); // Adjusted to trigger earlier
             
             articleHeadings.forEach(heading => {
                 observer.observe(heading);
             });
         }
+    }
+    
+    // Process headings after navigation (helps with refresh issues)
+    afterNavigate(() => {
+        processHeadings();
+    });
+    
+    onMount(() => {
+        processHeadings();
     });
 </script>
   
@@ -110,29 +79,13 @@
 <section class="flex flex-col lg:flex-row">
     <!-- Sidebar Navigation -->
     {#if headings.length > 0}
-    <aside class="hidden lg:block sticky top-20 h-fit max-h-[80vh] overflow-y-auto w-64 p-4 self-start">
+    <aside class="hidden lg:block sticky top-20 h-fit max-h-[80vh] overflow-y-auto w-2/5 p-4 self-start">
         <nav class="toc">
             <h4 class="text-lg font-semibold mb-3 text-green-700 dark:text-green-400">Contents</h4>
             <ul class="space-y-2">
                 {#each headings as heading}
-                {#if shouldShowHeading(heading, headings)}
                 <li class="pl-{(heading.level - 1) * 4}">
                     <div class="flex items-center">
-                        {#if heading.hasChildren}
-                        <button 
-                            onclick={() => toggleSection(heading.id)}
-                            class="w-4 h-4 flex items-center justify-center mr-1 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
-                            aria-label={collapsedSections[heading.id] ? "Expand section" : "Collapse section"}
-                        >
-                            <svg class="w-3 h-3 transition-transform duration-200 {collapsedSections[heading.id] ? '' : 'transform rotate-90'}" 
-                                 fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
-                            </svg>
-                        </button>
-                        {:else}
-                        <div class="w-4 mr-3"></div> <!-- Spacer for alignment -->
-                        {/if}
-                        
                         <a 
                             href="#{heading.id}" 
                             class="py-1 flex-grow border-l-2 pl-2 text-sm transition-colors duration-200 hover:text-green-700 dark:hover:text-green-400 {activeHeading === heading.id 
@@ -143,7 +96,6 @@
                         </a>
                     </div>
                 </li>
-                {/if}
                 {/each}
             </ul>
         </nav>
