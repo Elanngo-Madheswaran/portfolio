@@ -35,7 +35,7 @@
 </script>
   
 <nav class="bg-white border-gray-200 dark:bg-gray-900">
-  <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+  <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto sm:p-4 p-2">
   <div class="flex">
     <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
     <span class="self-center sm:text-2xl text-lg font-semibold whitespace-nowrap dark:text-white">
@@ -70,13 +70,7 @@
 
   {#if currentPath.startsWith('/blogs')}
     <!-- Simple navigation for blog page -->
-    <div class="w-auto md:block" id="navbar-default">
-    <ul class="font-medium flex flex-row md:space-x-8 rtl:space-x-reverse md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 items-center">
-      <li>
-      <a href="/" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-green-700 md:p-0 dark:text-white md:dark:hover:text-[#00ff00] dark:hover:bg-green-700 dark:hover:text-white md:dark:hover:bg-transparent">Home</a>
-      </li>
-    </ul>
-    </div>
+     
   {:else}
     <!-- Toggle button for mobile menu - only shown on main page -->
     <button
