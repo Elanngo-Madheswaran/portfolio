@@ -3,7 +3,11 @@ import { json } from '@sveltejs/kit';
 export async function GET() {
   try {
     // Use import.meta.glob to get all markdown files
-    const postImports = import.meta.glob('/static/content/blogs/*.{md,mdx}', { eager: true, as: 'raw' });
+    const postImports = import.meta.glob('/static/content/blogs/*.{md,mdx}', { 
+        eager: true, 
+        query: '?raw',
+        import: 'default'
+    });
     
     const posts = Object.entries(postImports).map(([path, content]) => {
       // Extract filename from path (which now contains date)

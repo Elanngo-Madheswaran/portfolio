@@ -1,11 +1,11 @@
 import { error } from '@sveltejs/kit';
+import { marked } from 'marked';
 
 export async function load({ params }) {
     try {
         const { slug } = params;
         
-        // Use import.meta.glob to get all markdown files
-        // Update deprecated 'as: raw' to 'query: ?raw, import: default'
+        // Update the deprecated 'as: raw' syntax to the new format
         const posts = import.meta.glob('/static/content/blogs/*.{md,mdx}', { 
             eager: true, 
             query: '?raw',
@@ -73,6 +73,12 @@ export async function load({ params }) {
         // Use Last-edited as the date field
         const date = metadata['Last-edited'] || metadata.date || filename.split('-').slice(0, 3).join('-');
         const articleNo = metadata['ArticleNo'] || metadata['articleNo'] || metadata['article_no'] || null;
+
+        // Parse markdown to HTML to extract headings
+        const htmlContent = marked(mainContent);
+        
+        // Extract headings from HTML content
+        const headings = extractHeadingsFromHTML(htmlContent);
         
         return {
             metadata: {
@@ -83,10 +89,34 @@ export async function load({ params }) {
                 ...metadata,
                 slug
             },
-            content: mainContent
+            content: mainContent,
+            headings: headings
         };
     } catch (e) {
         console.error(e);
         throw error(404, `Could not find post: ${params.slug}`);
     }
+}
+
+// Function to extract headings from HTML content
+function extractHeadingsFromHTML(html) {
+    // Use a regular expression to find all heading tags
+    const headingRegex = /<h([1-6])(?:\s+[^>]*)?>([\s\S]*?)<\/h\1>/gi;
+    const headings = [];
+    let match;
+
+    while ((match = headingRegex.exec(html)) !== null) {
+        // Create an ID from the heading content
+        const level = parseInt(match[1]);
+        const content = match[2].replace(/<[^>]*>/g, ''); // Remove any HTML tags inside the heading
+        const id = content.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]/g, '');
+
+        headings.push({
+            id,
+            title: content,
+            level
+        });
+    }
+
+    return headings;
 }

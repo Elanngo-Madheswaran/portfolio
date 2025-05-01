@@ -1,84 +1,65 @@
 <script>
     import { marked } from 'marked';
-    import { onMount } from 'svelte';
-    import { tick } from 'svelte';
     import { afterNavigate } from '$app/navigation';
+    import { onMount } from 'svelte';
     
     let { data } = $props();
-    const { metadata, content } = data;
+    const { metadata, content, headings } = data;
     
     // Parse markdown content to HTML
-    const htmlContent = marked(content);
-    
-    // Array to store headings
-    let headings = $state([]);
+    const htmlContent = marked(content, {
+        // Add an option to include IDs in heading elements
+        renderer: new marked.Renderer()
+    });
+
+    // Keep track of active heading for scrollspy
     let activeHeading = $state('');
     
     // Reference to the content container
     let contentContainer;
     
-    // Function to process headings
-    async function processHeadings() {
-        if (!contentContainer) return;
+    // Setup scrollspy after page load or navigation
+    function setupScrollSpy() {
+        if (!contentContainer || !headings || headings.length === 0) return;
         
-        // Wait for the next DOM update to ensure content is rendered
-        await tick();
+        // Find all heading elements that have IDs
+        const headingElements = Array.from(contentContainer.querySelectorAll('h1, h2, h3, h4, h5, h6'))
+            .filter(el => el.id);
         
-        // Get all headings from the article AFTER it's rendered to the DOM
-        const articleHeadings = contentContainer.querySelectorAll('h1, h2, h3, h4, h5, h6');
-        console.log('Found headings:', articleHeadings.length); // Debug
-        
-        // Clear headings array
-        headings = [];
-        
-        articleHeadings.forEach((heading) => {
-            // Create an ID for the heading if it doesn't have one
-            if (!heading.id) {
-                heading.id = heading.textContent.toLowerCase().replace(/\s+/g, '-');
-            }
-            
-            headings.push({
-                id: heading.id,
-                title: heading.textContent,
-                level: parseInt(heading.tagName.substring(1))
+        // Set up intersection observer for scroll spy
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    activeHeading = entry.target.id;
+                }
             });
+        }, { rootMargin: '-20px 0px -80% 0px' });
+        
+        // Observe all heading elements
+        headingElements.forEach(el => {
+            observer.observe(el);
         });
         
-        console.log('Processed headings:', headings); // Debug
-        
-        // Setup Intersection Observer for scroll spy
-        if (headings.length > 0) {
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        activeHeading = entry.target.id;
-                    }
-                });
-            }, { rootMargin: '-50px 0px -80% 0px' }); // Adjusted to trigger earlier
-            
-            articleHeadings.forEach(heading => {
-                observer.observe(heading);
-            });
-        }
+        return () => observer.disconnect();
     }
     
-    // Process headings after navigation (helps with refresh issues)
+    // Set up scrollspy after navigation
     afterNavigate(() => {
-        processHeadings();
+        setupScrollSpy();
     });
     
     onMount(() => {
-        processHeadings();
+        setupScrollSpy();
     });
 </script>
-  
+
 <svelte:head>
     <title>{metadata.title}</title>
 </svelte:head>
 
 <section class="flex flex-col lg:flex-row">
     <!-- Sidebar Navigation -->
-    {#if headings.length > 0}
+    {#if headings && headings.length > 0}
     <aside class="hidden lg:block sticky top-20 h-fit max-h-[80vh] overflow-y-auto w-2/5 p-4 self-start">
         <nav class="toc">
             <h4 class="text-lg font-semibold mb-3 text-green-700 dark:text-green-400">Contents</h4>
@@ -111,7 +92,7 @@
             </header>
             
             <div bind:this={contentContainer} class="prose prose-green dark:prose-invert max-w-none dark:text-slate-200">
-                {@html htmlContent}
+                {@html modifyHTMLWithIDs(htmlContent, headings)}
             </div>
             
             <footer class="mt-10 pt-4 border-t border-gray-200 dark:border-gray-700">
@@ -125,3 +106,32 @@
         </article>
     </div>
 </section>
+
+<script context="module">
+// Helper function to add IDs to HTML headings based on extracted headings
+export function modifyHTMLWithIDs(html, headings) {
+    if (!headings || headings.length === 0) return html;
+    
+    let modifiedHTML = html;
+    
+    // Replace each heading with a version that has the id attribute
+    headings.forEach(heading => {
+        const level = heading.level;
+        const title = escapeRegExp(heading.title);
+        const id = heading.id;
+        
+        // Create regex to match the heading
+        const regex = new RegExp(`<h${level}([^>]*)>(${title})<\/h${level}>`, 'i');
+        
+        // Replace with version that includes id
+        modifiedHTML = modifiedHTML.replace(regex, `<h${level}$1 id="${id}">$2</h${level}>`);
+    });
+    
+    return modifiedHTML;
+}
+
+// Helper function to escape special characters in regex
+export function escapeRegExp(string) {
+    return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+</script>

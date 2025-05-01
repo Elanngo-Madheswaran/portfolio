@@ -1,22 +1,28 @@
 <script>
     let { data } = $props();
-    let searchQuery = $state('');
-    let sortOrder = $state('dateDesc'); // Default sort order
-
+    let posts = $state(data.posts || []); // Ensure posts is an array
+    
+    // Search term and sortOrder
+    let searchTerm = $state('');
+    let sortOrder = $state('dateDesc'); // Default sort by newest first
+    
     // Filtered and sorted posts
     let filteredPosts = $derived.by(() => {
-        return data.posts
-        .filter(post => 
-            post.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
-            (post.excerpt && post.excerpt.toLowerCase().includes(searchQuery.toLowerCase()))
-        )
-        .sort((a, b) => {
-            if (sortOrder === 'dateDesc') return new Date(b.date) - new Date(a.date);
-            if (sortOrder === 'dateAsc') return new Date(a.date) - new Date(b.date);
-            if (sortOrder === 'titleAsc') return a.title.localeCompare(b.title);
-            if (sortOrder === 'titleDesc') return b.title.localeCompare(a.title);
-            return 0;
-        });
+        // Filter posts by search term
+        return posts
+            .filter(post => {
+                if (!searchTerm) return true;
+                const searchLower = searchTerm.toLowerCase();
+                return post.title.toLowerCase().includes(searchLower) || 
+                       post.excerpt.toLowerCase().includes(searchLower);
+            })
+            .sort((a, b) => {
+                if (sortOrder === 'dateDesc') return new Date(b.date) - new Date(a.date);
+                if (sortOrder === 'dateAsc') return new Date(a.date) - new Date(b.date);
+                if (sortOrder === 'titleAsc') return a.title.localeCompare(b.title);
+                if (sortOrder === 'titleDesc') return b.title.localeCompare(a.title);
+                return 0;
+            });
     });
 </script>
 
@@ -33,7 +39,7 @@
                 <div class="mb-4 sm:mb-0 sm:w-1/2 mr-2">
                     <input 
                         type="text" 
-                        bind:value={searchQuery}
+                        bind:value={searchTerm}
                         placeholder="Search blogs..." 
                         class="w-full px-4 py-2 border rounded-lg dark:bg-gray-800 dark:text-white dark:border-gray-600"
                     />

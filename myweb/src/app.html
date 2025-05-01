@@ -9,7 +9,6 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	  <link rel="icon" href="/logo.png" type="image/png">
     <title>Elanngo Madheswaran | Portfolio Website</title>
 
     <!-- Search Engine Optimization -->
@@ -48,6 +47,24 @@
         flex-direction: column;
       }
 	</style>
+		<!-- Inline script to prevent theme flash -->
+        <script>
+            // Immediately apply the stored theme on page load before any rendering
+            (function() {
+                try {
+                    const isDark = localStorage.getItem('theme') === 'dark';
+                    // If is dark or there's no saved preference and system prefers dark
+                    if (isDark || (localStorage.getItem('theme') === null && 
+                        window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                        document.documentElement.classList.add('dark');
+                    } else {
+                        document.documentElement.classList.remove('dark');
+                    }
+                } catch (e) {
+                    // Fail silently if localStorage is not available
+                }
+            })();
+        </script>
 		%sveltekit.head%
 	</head>
 	<body data-sveltekit-preload-data="hover">
