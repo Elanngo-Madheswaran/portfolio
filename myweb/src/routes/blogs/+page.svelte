@@ -27,7 +27,6 @@
 <div class="bg-white dark:bg-black selection:bg-green-700 selection:text-white transition duration-700 ease-in-out">
     <section class="flex flex-col">
         <div class="xl:w-3/4 self-center w-full sm:m-5 sm:p-5 flex flex-col">
-            <h3 class="dark:text-white text-green-900 font-bold text-3xl m-5">My Blog</h3>
             
             <!-- Search and sort controls -->
             <div class="flex flex-col sm:flex-row justify-between mb-6 px-5">
