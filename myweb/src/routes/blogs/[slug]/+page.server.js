@@ -71,7 +71,8 @@ export async function load({ params }) {
         const filename = matchingPath.split('/').pop().replace(/\.(md|mdx)$/, '');
         
         // Use Last-edited as the date field
-        const date = metadata['Last-edited'] || metadata.date || filename.split('-').slice(0, 3).join('-');
+        const rawDate = metadata['Last-edited'] || metadata.date || filename.split('-').slice(0, 3).join('-');
+        const date = parseDateTime(rawDate);
         const articleNo = metadata['ArticleNo'] || metadata['articleNo'] || metadata['article_no'] || null;
 
         // Parse markdown to HTML to extract headings
@@ -119,4 +120,39 @@ function extractHeadingsFromHTML(html) {
     }
 
     return headings;
+}
+
+// Add this function to parse date strings with optional time component
+function parseDateTime(dateTimeStr) {
+    if (!dateTimeStr) return new Date().toISOString();
+    
+    // Check for YYYY-MM-DD, HH:MM format
+    const dateTimeMatch = dateTimeStr.match(/^(\d{4}-\d{2}-\d{2})(?:,\s*(\d{2}:\d{2}))?$/);
+    if (dateTimeMatch) {
+        const datePart = dateTimeMatch[1];
+        const timePart = dateTimeMatch[2] || '00:00';
+        return `${datePart}T${timePart}:00`;
+    }
+    
+    // Check for DD-MM-YYYY format (to handle legacy dates)
+    const ddmmyyyyMatch = dateTimeStr.match(/^(\d{1,2})-(\d{1,2})-(\d{4})$/);
+    if (ddmmyyyyMatch) {
+        const day = ddmmyyyyMatch[1].padStart(2, '0');
+        const month = ddmmyyyyMatch[2].padStart(2, '0');
+        const year = ddmmyyyyMatch[3];
+        return `${year}-${month}-${day}T00:00:00`;
+    }
+    
+    // If it's already in a valid format, return as is
+    try {
+        const date = new Date(dateTimeStr);
+        if (!isNaN(date.getTime())) {
+            return date.toISOString();
+        }
+    } catch (e) {
+        // Invalid date, continue to default
+    }
+    
+    // Default to current date/time
+    return new Date().toISOString();
 }
