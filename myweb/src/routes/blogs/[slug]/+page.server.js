@@ -70,29 +70,9 @@ export async function load({ params }) {
         // Get filename from path
         const filename = matchingPath.split('/').pop().replace(/\.(md|mdx)$/, '');
         
-        // Update the date parsing in your +page.server.js file
-        function parseDate(dateStr) {
-            if (!dateStr) return new Date();
-            
-            // Try DD-MM-YYYY format
-            const ddmmyyyy = dateStr.match(/^(\d{1,2})-(\d{1,2})-(\d{4})$/);
-            if (ddmmyyyy) {
-                return new Date(`${ddmmyyyy[3]}-${ddmmyyyy[2].padStart(2, '0')}-${ddmmyyyy[1].padStart(2, '0')}`);
-            }
-            
-            // Try regular date parsing
-            const parsed = new Date(dateStr);
-            if (!isNaN(parsed.getTime())) {
-                return parsed;
-            }
-            
-            // Default to current date if nothing works
-            return new Date();
-        }
-
-        const rawDate = metadata['Last-edited'] || metadata.date || filename.split('-').slice(0, 3).join('-');
-        const parsedDate = parseDate(rawDate);
-        const date = parsedDate.toISOString().split('T')[0]; // Format as YYYY-MM-DD
+        // Use Last-edited as the date field
+        const date = metadata['Last-edited'] || metadata.date || filename.split('-').slice(0, 3).join('-');
+        const articleNo = metadata['ArticleNo'] || metadata['articleNo'] || metadata['article_no'] || null;
 
         // Parse markdown to HTML to extract headings
         const htmlContent = marked(mainContent);
@@ -139,4 +119,39 @@ function extractHeadingsFromHTML(html) {
     }
 
     return headings;
+}
+
+// Add this function to parse date strings with optional time component
+function parseDateTime(dateTimeStr) {
+    if (!dateTimeStr) return new Date().toISOString();
+    
+    // Check for YYYY-MM-DD, HH:MM format
+    const dateTimeMatch = dateTimeStr.match(/^(\d{4}-\d{2}-\d{2})(?:,\s*(\d{2}:\d{2}))?$/);
+    if (dateTimeMatch) {
+        const datePart = dateTimeMatch[1];
+        const timePart = dateTimeMatch[2] || '00:00';
+        return `${datePart}T${timePart}:00`;
+    }
+    
+    // Check for DD-MM-YYYY format (to handle legacy dates)
+    const ddmmyyyyMatch = dateTimeStr.match(/^(\d{1,2})-(\d{1,2})-(\d{4})$/);
+    if (ddmmyyyyMatch) {
+        const day = ddmmyyyyMatch[1].padStart(2, '0');
+        const month = ddmmyyyyMatch[2].padStart(2, '0');
+        const year = ddmmyyyyMatch[3];
+        return `${year}-${month}-${day}T00:00:00`;
+    }
+    
+    // If it's already in a valid format, return as is
+    try {
+        const date = new Date(dateTimeStr);
+        if (!isNaN(date.getTime())) {
+            return date.toISOString();
+        }
+    } catch (e) {
+        // Invalid date, continue to default
+    }
+    
+    // Default to current date/time
+    return new Date().toISOString();
 }
