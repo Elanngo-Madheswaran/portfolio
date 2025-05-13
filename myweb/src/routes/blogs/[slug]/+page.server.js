@@ -70,9 +70,29 @@ export async function load({ params }) {
         // Get filename from path
         const filename = matchingPath.split('/').pop().replace(/\.(md|mdx)$/, '');
         
-        // Use Last-edited as the date field
-        const date = metadata['Last-edited'] || metadata.date || filename.split('-').slice(0, 3).join('-');
-        const articleNo = metadata['ArticleNo'] || metadata['articleNo'] || metadata['article_no'] || null;
+        // Update the date parsing in your +page.server.js file
+        function parseDate(dateStr) {
+            if (!dateStr) return new Date();
+            
+            // Try DD-MM-YYYY format
+            const ddmmyyyy = dateStr.match(/^(\d{1,2})-(\d{1,2})-(\d{4})$/);
+            if (ddmmyyyy) {
+                return new Date(`${ddmmyyyy[3]}-${ddmmyyyy[2].padStart(2, '0')}-${ddmmyyyy[1].padStart(2, '0')}`);
+            }
+            
+            // Try regular date parsing
+            const parsed = new Date(dateStr);
+            if (!isNaN(parsed.getTime())) {
+                return parsed;
+            }
+            
+            // Default to current date if nothing works
+            return new Date();
+        }
+
+        const rawDate = metadata['Last-edited'] || metadata.date || filename.split('-').slice(0, 3).join('-');
+        const parsedDate = parseDate(rawDate);
+        const date = parsedDate.toISOString().split('T')[0]; // Format as YYYY-MM-DD
 
         // Parse markdown to HTML to extract headings
         const htmlContent = marked(mainContent);

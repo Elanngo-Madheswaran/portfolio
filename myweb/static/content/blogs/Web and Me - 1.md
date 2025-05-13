@@ -27,27 +27,14 @@ Learn from a front end developer, it is ok to start on your own or any stack dev
 
 Use learning resources like:
 
-```cardlink
-url: https://cs50.harvard.edu/web/2020/weeks/0/
-title: "Week 0 HTML and CSS - CS50's Web Programming with Python and JavaScript"
-description: "This course picks up where Harvard University's CS50 leaves off, diving more deeply into the design and implementation of web apps with Python, JavaScript, and SQL using frameworks like Django, React, and Bootstrap. Topics include database design, scalability, security, and user experience. Through hands-on projects, students learn to write and use APIs, create interactive UIs, and leverage cloud services like GitHub and Heroku. By semester’s end, students emerge with knowledge and experience in principles, languages, and tools that empower them to design and deploy applications on the Internet."
-host: cs50.harvard.edu
-favicon: ../../favicon.ico?1747075340
-image: https://img.youtube.com/vi/24Kf3v7kZyE/maxresdefault.jpg
-```
+- https://cs50.harvard.edu/web/2020/weeks/0/
 
-
-```cardlink
-url: https://students.yourlearning.ibm.com/activity/PLAN-43A030B97485
-title: "IBM SkillsBuild"
-host: students.yourlearning.ibm.com
-favicon: ./assets/favicon.png
-```
+- https://students.yourlearning.ibm.com/activity/PLAN-43A030B97485
 
 These resources helped me to strong my foundation.
 Once a wise man told in a movie:
 
-> When your foundation is strong enough you could build any number of floors above it 
-> But when your foundation is inconsistent no matter how string your building floors might be it would collapse at any moment.
+> **When your foundation is strong enough you could build any number of floors above it** 
+> **But when your foundation is inconsistent no matter how string your building floors might be it would collapse at any moment.**
 
 Ok lets meet in the next article soon.

@@ -88,7 +88,9 @@
         <article class="bg-white dark:bg-black rounded-lg shadow-lg p-6 lg:p-8 mx-auto w-full max-w-3xl">
             <header class="mb-8 pb-4 border-b border-gray-200 dark:border-gray-700">
                 <h1 class="text-3xl font-bold mb-2 text-green-900 dark:text-white">{metadata.title}</h1>
-                <p class="text-slate-600 dark:text-slate-400 italic">{new Date(metadata.date).toLocaleDateString()}</p>
+                <p class="text-slate-600 dark:text-slate-400 italic">
+    {new Date(metadata.date).toLocaleDateString()}
+</p>
             </header>
             
             <div bind:this={contentContainer} class="prose prose-green dark:prose-invert max-w-none dark:text-slate-200 prose-sm sm:prose-base lg:prose-lg xl:prose-xl">

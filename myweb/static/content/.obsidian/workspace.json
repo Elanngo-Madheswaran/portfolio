@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "blogs/Web and Me - 1.md",
+                "file": "blogs/Hello-World-01-05-25.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Web and Me - 1"
+              "title": "Hello-World-01-05-25"
             }
           }
         ]
@@ -142,13 +142,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "blogs/Web and Me - 1.md",
+                "file": "blogs/Hello-World-01-05-25.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Web and Me - 1"
+              "title": "Outline of Hello-World-01-05-25"
             }
           },
           {
@@ -180,11 +180,11 @@
   },
   "active": "89a77f84c666e780",
   "lastOpenFiles": [
+    "blogs/How I implemented my blog.md",
+    "blogs/Web and Me - 1.md",
+    "blogs/Hello-World-01-05-25.md",
     "template/Template.md",
     "Untitled.md",
-    "blogs/Web and Me - 1.md",
-    "blogs/How I implemented my blog.md",
-    "blogs/Hello-World-01-05-25.md",
     "blogs/How my blog works.md",
     "template",
     "blogs/Title.md",
