@@ -27,9 +27,9 @@ Learn from a front end developer, it is ok to start on your own or any stack dev
 
 Use learning resources like:
 
-- https://cs50.harvard.edu/web/2020/weeks/0/
+- [CS50 - Harvard](https://cs50.harvard.edu/web/2020/weeks/0/)
 
-- https://students.yourlearning.ibm.com/activity/PLAN-43A030B97485
+- [IBM - CourseWare](https://students.yourlearning.ibm.com/activity/PLAN-43A030B97485)
 
 These resources helped me to strong my foundation.
 Once a wise man told in a movie:
