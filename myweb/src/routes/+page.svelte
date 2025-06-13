@@ -40,7 +40,11 @@
             ]
         }
     ];
-    let projects = [
+    let projects = [{
+                        name: "Monty hall Simulator",
+                        description: "Monty hall problem simulator made using svelte with mongodb integration for storing statistics",
+                        link: "https://elanngo-monty-hall.vercel.app/"
+                    },
                     {
                         name: "Minesweeper game",
                         description: "Minesweeper game made using svelte leveraging its reactive states and components",
