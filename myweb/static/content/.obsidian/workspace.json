@@ -13,26 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "blogs/Web and Me - 1.md",
+                "file": "blogs/Minesweeper Blog.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Web and Me - 1"
-            }
-          },
-          {
-            "id": "fcf85001e2d807ac",
-            "type": "leaf",
-            "state": {
-              "type": "split-diff-view",
-              "state": {
-                "aFile": "myweb/static/content/.obsidian/workspace.json",
-                "bFile": "myweb/static/content/.obsidian/workspace.json",
-                "aRef": ""
-              },
-              "icon": "diff",
-              "title": "Diff: workspace.json"
+              "title": "Minesweeper Blog"
             }
           },
           {
@@ -49,8 +35,7 @@
               "title": "Template"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -208,13 +193,13 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "fcf85001e2d807ac",
+  "active": "f7183e1dca2ad11f",
   "lastOpenFiles": [
+    "blogs/Web and Me - 1.md",
     "blogs/Minesweeper Blog.md",
     "blog-assets/Pasted image 20251117203125.png",
     "blog-assets/Pasted image 20251117200227.png",
     "blogs/How I implemented my blog.md",
-    "blogs/Web and Me - 1.md",
     "blogs/Hello-World-01-05-25.md",
     "Untitled.base",
     "template/Template.md",

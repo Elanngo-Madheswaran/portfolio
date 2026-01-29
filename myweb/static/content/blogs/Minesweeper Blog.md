@@ -18,7 +18,8 @@ npm run dev
 
 In the minesweeper we create a board (say 10 x 10 ) has titles filled and below those tiles we have either a mine or a number that shows the number of mines in the nine tiles surrounding it.
 
-![[Pasted image 20251117200227.png]]in this above image the tile showing "1" meaning in the highlighted 8 titles there is 1 mine waiting to explode. When we finish all the titles without clicking on mines we win if we click on any mine then we lose.
+<img src="../blog-assets/Pasted image 20251117200227.png"/>
+in this above image the tile showing "1" meaning in the highlighted 8 titles there is 1 mine waiting to explode. When we finish all the titles without clicking on mines we win if we click on any mine then we lose.
 
 ### Flag system
 There is a flag system in the game that allows user to mark the tiles which they think are mines and can easily avoid them.
@@ -106,7 +107,7 @@ function checksurround(n){
 ```
 
 Here the main logic is in the for loop which calculates returns the cell numbers by finding the surrounding cells as explained in the image below
-![[Pasted image 20251117203125.png]]
+<img src="../blog-assets/Pasted image 20251117203125.png" />
 
 #### Reveal 
 
