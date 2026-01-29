@@ -25,14 +25,14 @@
             "id": "fcf85001e2d807ac",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "split-diff-view",
               "state": {
-                "file": "blogs/Minesweeper Blog.md",
-                "mode": "source",
-                "source": false
+                "aFile": "myweb/static/content/.obsidian/workspace.json",
+                "bFile": "myweb/static/content/.obsidian/workspace.json",
+                "aRef": ""
               },
-              "icon": "lucide-file",
-              "title": "Minesweeper Blog"
+              "icon": "diff",
+              "title": "Diff: workspace.json"
             }
           },
           {
@@ -210,10 +210,12 @@
   },
   "active": "fcf85001e2d807ac",
   "lastOpenFiles": [
+    "blogs/Minesweeper Blog.md",
+    "blog-assets/Pasted image 20251117203125.png",
+    "blog-assets/Pasted image 20251117200227.png",
     "blogs/How I implemented my blog.md",
     "blogs/Web and Me - 1.md",
     "blogs/Hello-World-01-05-25.md",
-    "blogs/Minesweeper Blog.md",
     "Untitled.base",
     "template/Template.md",
     "Untitled 1.md",
