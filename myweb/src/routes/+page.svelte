@@ -13,14 +13,15 @@
         {
             category: "Front End",
             items: [
-                { name: "Svelte", icon: "https://upload.wikimedia.org/wikipedia/commons/1/1b/Svelte_Logo.svg" },
+                { name: "Next.js", icon: "https://profilinator.rishav.dev/skills-assets/nextjs.png" },
                 { name: "React", icon: "https://profilinator.rishav.dev/skills-assets/react-original-wordmark.svg" },
                 { name: "Angular", icon: "https://profilinator.rishav.dev/skills-assets/angularjs-original.svg" },
                 { name: "Bootstrap", icon: "https://profilinator.rishav.dev/skills-assets/bootstrap-plain.svg" },
                 { name: "Node.js", icon: "https://profilinator.rishav.dev/skills-assets/nodejs-original-wordmark.svg" },
                 { name: "TypeScript", icon: "https://profilinator.rishav.dev/skills-assets/typescript-original.svg" },
                 { name: "Tailwind CSS", icon: "https://profilinator.rishav.dev/skills-assets/tailwindcss.svg" },
-                { name: "Next.js", icon: "https://profilinator.rishav.dev/skills-assets/nextjs.png" }
+                { name: "Svelte", icon: "https://upload.wikimedia.org/wikipedia/commons/1/1b/Svelte_Logo.svg" },
+                { name: "HTMX" , icon: "https://upload.wikimedia.org/wikipedia/commons/c/c4/SVGmix-XRp12W-htmx.svg"}
             ]
         },
         {
