@@ -9,7 +9,7 @@
     <header class="fixed w-full z-20 top-0 start-0">
         <Navbar />
     </header>
-    <div class="min-h-screen pt-10">
+    <div class="min-h-screen flex flex-col justify-center items-center w-full pt-10">
         {@render children()}
     </div>
 </div>

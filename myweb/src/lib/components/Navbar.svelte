@@ -34,8 +34,8 @@
   
 </script>
   
-<nav class="bg-white border-gray-200 dark:bg-gray-900">
-  <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto sm:p-4 p-2">
+<nav class="bg-white border-gray-200 dark:bg-gray-900 flex justify-center">
+  <div class="max-w-screen-2xl w-full flex flex-wrap items-center justify-between sm:p-4 p-2">
   <div class="flex">
     <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
     <span class="self-center sm:text-2xl text-lg font-semibold whitespace-nowrap dark:text-white">
