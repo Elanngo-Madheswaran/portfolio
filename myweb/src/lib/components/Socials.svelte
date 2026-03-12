@@ -2,7 +2,7 @@
     let { socialLinks } = $props();
 </script>
 
-<div class="xl:w-3/4 self-center w-full sm:m-5 sm:p-5 flex flex-col">
+<div class="self-center w-full sm:m-5 sm:p-5 m-2 flex flex-col">
     <h3 class="dark:text-white text-green-900 font-bold text-3xl m-5">Socials</h3>
     <ul class="flex flex-wrap justify-center align-middle wrapper">
         {#each socialLinks as link}

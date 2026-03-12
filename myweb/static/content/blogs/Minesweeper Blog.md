@@ -1,6 +1,6 @@
 ---
 Title: How I created minesweeper in svelte
-Last-edited: 2026-01-29, 22:01
+Last-edited: 2026-03-12, 22:01
 excerpt: This article discusses how I created minesweeper in svelte and core logics inside its features
 ---
 Hi , today in this blog I am going to explain how did I made a dynamic minesweeper using svelte.

@@ -111,9 +111,9 @@ let { form , data } = $props();
         </header>
     
         <!-- Main text -->
-        <div class="h-20" aria-hidden="true"></div>
-        <div class="flex flex-col">
-            <div class="text-dark dark:text-white flex m-5 p-5 2xl:w-3/4 self-center md:flex-row flex-col">
+        <div class="h-10 sm:hidden" aria-hidden="true"></div>
+        <div class="flex flex-col w-full">
+            <div class="text-dark dark:text-white flex m-5 p-5 self-center md:flex-row flex-col w-full">
                 <div class="sm:m-5 sm:p-5 flex flex-col">
                     <p class="text-2xl lg:text-4xl font-bold">Hi <span class="dark:text-green-400 text-green-900">I'm</span></p>
                     <p class="font-bold lg:text-6xl text-4xl my-5 jello-horizontal">Elan<span class="bounce-in-bck inline-block">n</span>go <span class="dark:text-green-500 text-green-900">Madheswaran</span></p>
@@ -128,7 +128,7 @@ let { form , data } = $props();
         
         <!-- skills section -->
          <section id="skills" class="flex flex-col">
-            <div class="text-black dark:text-white flex items-center flex-col xl:w-3/4 self-center mb-5 pb-5">
+            <div class="text-black dark:text-white flex items-center flex-col self-center mb-5 pb-5">
                 <h3 class="dark:text-white text-green-900 font-bold text-3xl mx-5 px-5 self-start">Skills</h3>
                 <div class="flex flex-wrap sm:mx-5 sm:px-5 justify-center items-center">
                     {#each skills as skillCategory}
@@ -141,10 +141,10 @@ let { form , data } = $props();
     
         <!-- projects section -->
         <section id="projects" class="flex flex-col">
-            <div class="xl:w-3/4 self-center w-full sm:m-5 sm:p-5 flex flex-col">
+            <div class="self-center w-full sm:m-5 sm:p-5 flex flex-col">
                 <h3 class="dark:text-white text-green-900 font-bold text-3xl m-5">Projects</h3>
-                <div class="self-center lg:w-full sm:w-3/4">
-                    <div class="flex flex-wrap justify-center">
+                <div class="self-center">
+                    <div class="grid md:grid-cols-2 xl:grid-cols-3">
                         {#each projects as project}
                             <div class="max-w-sm p-6 rounded-lg shadow bg-green-700 dark:bg-green-900 m-5">
                                 <h4 class="mb-2 text-2xl font-bold tracking-tight text-white dark:text-white">{project.name}</h4>
@@ -164,7 +164,7 @@ let { form , data } = $props();
     
         <!-- contact section -->
         <section id="contact" class="flex flex-col">
-            <div class="xl:w-3/4 self-center w-full sm:m-5 sm:p-5 flex flex-col">
+            <div class="self-center w-full sm:m-5 sm:p-5 flex flex-col">
                     <h3 class="dark:text-white text-green-900 font-bold text-3xl m-5">Contact Me</h3>
                     <form method="POST" class="flex flex-col bg-green-700 dark:bg-green-950 p-6 rounded-lg shadow text-white md:w-3/4 w-full self-center">
                         {#if form?.error}
@@ -191,7 +191,7 @@ let { form , data } = $props();
             </section>
 
             <!-- Social links -->
-    <section id="social-links" class="flex flex-col">
+    <section id="social-links" class="flex flex-col w-full">
         <Socials {socialLinks} />
     </section>
 

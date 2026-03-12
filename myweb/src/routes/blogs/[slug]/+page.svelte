@@ -191,7 +191,7 @@
 <svelte:head>
   <title>{metadata.title}</title>
 </svelte:head>
-<div class="flex max-w-screen-2xl items-center justify-center w-full">
+<div class="flex w-full">
   <section class="flex flex-col lg:flex-row w-full">
     <!-- Sidebar Navigation -->
     {#if headings && headings.length > 0}
@@ -228,10 +228,10 @@
     <!-- Main Content -->
     <div class="xl:w-3/4 self-center w-full sm:m-5 sm:p-5 pt-10 flex flex-col">
       <article
-        class="bg-white dark:bg-black rounded-lg shadow-lg p-6 lg:p-8 mx-auto w-full max-w-3xl"
+        class="bg-white dark:bg-black rounded-lg shadow-lg sm:p-6 lg:p-8 mx-auto w-full max-w-3xl"
       >
         <header class="mb-8 pb-4 border-b border-gray-200 dark:border-gray-700">
-          <h1 class="text-3xl font-bold mb-2 text-green-900 dark:text-white">
+          <h1 class="sm:text-3xl text-2xl font-bold mb-2 text-green-900 dark:text-white ">
             {metadata.title}
           </h1>
           <p class="text-slate-600 dark:text-slate-400 italic">

@@ -31,8 +31,8 @@
 </svelte:head>
 
 <div class="bg-white dark:bg-black selection:bg-green-700 selection:text-white transition duration-700 ease-in-out w-full flex flex-col justify-center items-center">
-    <section class="flex flex-col max-w-screen-2xl w-full">
-        <div class="xl:w-3/4 self-center w-full sm:m-5 sm:p-5 flex flex-col">
+    <section class="flex flex-col w-full">
+        <div class="self-center w-full sm:m-5 sm:p-5 flex flex-col">
             
             <!-- Search and sort controls -->
             <div class="flex flex-col w-full sm:flex-row justify-between mb-6 px-5">
