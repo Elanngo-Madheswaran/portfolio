@@ -103,7 +103,7 @@ let { form , data } = $props();
     <title>Elanngo Madheswaran's Portfolio | Portfolio</title>
 </svelte:head>
 
-<div class="bg-white dark:bg-black selection:bg-green-700 selection:text-white {theme == 'dark' ? 'dark' : ''} transition duration-700 ease-in-out h-full">
+<div class=" max-w-screen-2xl   selection:bg-green-700 selection:text-white {theme == 'dark' ? 'dark' : ''} transition duration-700 flex flex-col ease-in-out h-full w-full">
         <header class="fixed w-full z-20 top-0 start-0">
             <!-- top nav bar -->
             <Navbar />
@@ -113,7 +113,7 @@ let { form , data } = $props();
         <!-- Main text -->
         <div class="h-20" aria-hidden="true"></div>
         <div class="flex flex-col">
-            <div class="text-dark dark:text-white flex m-5 p-5 xl:w-3/4 self-center md:flex-row flex-col">
+            <div class="text-dark dark:text-white flex m-5 p-5 2xl:w-3/4 self-center md:flex-row flex-col">
                 <div class="sm:m-5 sm:p-5 flex flex-col">
                     <p class="text-2xl lg:text-4xl font-bold">Hi <span class="dark:text-green-400 text-green-900">I'm</span></p>
                     <p class="font-bold lg:text-6xl text-4xl my-5 jello-horizontal">Elan<span class="bounce-in-bck inline-block">n</span>go <span class="dark:text-green-500 text-green-900">Madheswaran</span></p>

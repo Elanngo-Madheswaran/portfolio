@@ -7,5 +7,6 @@
     <title>Elanngo Madheswaran's Portfolio | Portfolio</title>
 </svelte:head>
 
-
-{@render children()}
+<div class="w-full dark:bg-black  bg-white flex flex-col justify-center items-center">
+    {@render children()}
+</div>
