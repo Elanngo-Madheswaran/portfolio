@@ -3,12 +3,15 @@
     import { SkillBoard , Navbar , Socials } from "$components";
     import { onMount } from "svelte";
     import {theme} from '$lib/stores/themeStore'
+    import { enhance } from '$app/forms';
 
     function opentab(url) {
         window.open(url, '_blank');
     }
 
-    let isDark = $state(true); 
+    let isDark = $state(true);
+    let formSubmitting = $state(false);
+    const WEB3FORMS_ACCESS_KEY = '0bc2d2b3-66d4-4a11-9397-4c1e31f4108c';
     let skills = [
         {
             category: "Front End",
@@ -94,8 +97,42 @@
         isDark = !isDark;
     }
     
-let status = $state("");
-let { form , data } = $props();
+let { form } = $props();
+
+// Custom enhance callback for handling both client and server submissions
+function handleFormEnhance() {
+    return async ({ formData, action, cancel }) => {
+        formSubmitting = true;
+
+        // Prepare data for Web3Forms
+        const web3FormsData = {
+            access_key: WEB3FORMS_ACCESS_KEY,
+            name: formData.get('name'),
+            email: formData.get('email'),
+            company: formData.get('company'),
+            message: formData.get('message')
+        };
+
+        // Submit to Web3Forms (client-side)
+        try {
+            await fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(web3FormsData)
+            });
+        } catch (err) {
+            console.error('Web3Forms error:', err);
+        }
+
+        // Return callback to handle the server response
+        return async ({ result, update }) => {
+            formSubmitting = false;
+            await update();
+        };
+    };
+}
             
 </script>
 
@@ -166,11 +203,11 @@ let { form , data } = $props();
         <section id="contact" class="flex flex-col">
             <div class="self-center w-full sm:m-5 sm:p-5 flex flex-col">
                     <h3 class="dark:text-white text-green-900 font-bold text-3xl m-5">Contact Me</h3>
-                    <form method="POST" class="flex flex-col bg-green-700 dark:bg-green-950 p-6 rounded-lg shadow text-white md:w-3/4 w-full self-center">
+                    <form method="POST" use:enhance={handleFormEnhance()} class="flex flex-col bg-green-700 dark:bg-green-950 p-6 rounded-lg shadow text-white md:w-3/4 w-full self-center">
                         {#if form?.error}
-                        <p class="text-red-400 mb-3">I am expirencing few issues, Please try again later or email directly through <a href="mailto:elanngo@disroot.org" class="text-blue-400">elanngo@disroot.org</a></p>
+                            <p class="text-red-400 mb-3">I am expirencing few issues, Please try again later or email directly through <a href="mailto:elanngo@disroot.org" class="text-blue-400">elanngo@disroot.org</a></p>
                         {/if}
-                        {#if form?.success == true}
+                        {#if form?.success}
                             <p class="text-green-300 mb-3">Mail Sent Successfully , I will contact you within 48 hours.</p>
                         {:else}
                             <label for="name" class="mb-2 font-bold text-xl">Name</label>
@@ -184,7 +221,7 @@ let { form , data } = $props();
                             
                             <label for="message" class="mb-2 font-bold text-xl">Message</label>
                             <textarea id="message" name="message" required rows="3" class="mb-4 p-2 rounded-lg text-black dark:text-black dark:bg-gray-300 bg-white"></textarea>
-                            <input type="submit" value="Send" class="w-48 p-2 bg-blue-700 text-white hover:bg-blue-800 transition hover:-translate-y-1.5 hover:scale-110 rounded-xl text-xl cursor-pointer" />
+                            <input type="submit" value={formSubmitting ? "Sending..." : "Send"} disabled={formSubmitting} class="w-48 p-2 bg-blue-700 text-white hover:bg-blue-800 transition hover:-translate-y-1.5 hover:scale-110 rounded-xl text-xl cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed" />
                         {/if}
                     </form>
                 </div>

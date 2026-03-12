@@ -156,13 +156,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "blogs/Web and Me - 1.md",
+                "file": "blogs/Minesweeper Blog.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Web and Me - 1"
+              "title": "Outline of Minesweeper Blog"
             }
           },
           {
@@ -193,7 +193,7 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "f7183e1dca2ad11f",
+  "active": "f93ccc9640163d7d",
   "lastOpenFiles": [
     "blogs/Hello-World-01-05-25.md",
     "blog-assets/Pasted image 20251117200227.png",
